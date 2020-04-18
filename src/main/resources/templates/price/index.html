@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <li class="nav-item">
+        <a th:href="@{/}">back to main page</a>
+    </li>
+
+    <p class="font-weight-normal">Operations with price:</p>
+    <nav class="navbar bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a th:href="@{/price/find}">Find</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/price/add}">Add</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+</body>
+</html>
+

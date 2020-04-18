@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add price</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body class=".bg-secondary">
+<div class="container">
+    <li class="nav-item">
+        <a th:href="@{/}">back to main page</a>
+    </li>
+
+    <p class="font-weight-normal">Add a new price:</p>
+    <form th:action="@{/price/add}" method="post">
+        <input type="number" name="productId" placeholder="Enter product id"/>
+        <input type="number" step="0.01" name="value" placeholder="Enter value"/>
+        <select name="currency">
+            <option th:each="currency : ${T(com.training.models.enums.Currency).values()}"
+                    th:value="${currency}" th:text="${currency}">
+
+            </option>
+        </select>
+        <input type="submit" value="Add"/>
+    </form>
+
+    <p class="font-weight-normal">Result:</p>
+    <div th:switch="${price != null}">
+        <span th:case="${true}">
+            <table class="table table-dark">
+                 <thead>
+                 <tr>
+                     <th scope="col"> id </th>
+                     <th scope="col"> value </th>
+                     <th scope="col"> currency </th>
+                     <th scope="col"> product </th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                <tr>
+                    <td scope="row" th:text="${price.id}"/>
+                    <td th:text="${price.value}"/>
+                    <td th:text="${price.currency}"/>
+                    <td th:text="${price.product}"/>
+                 </tr>
+             </tbody>
+             </table>
+        </span>
+        <span th:case="${false}">
+            <p class="font-weight-normal">Empty result</p>
+        </span>
+
+    </div>
+</div>
+
+</body>
+</html>

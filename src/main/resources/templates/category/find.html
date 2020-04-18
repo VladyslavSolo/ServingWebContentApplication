@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Category</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <li class="nav-item">
+        <a th:href="@{/}">back to main page</a>
+    </li>
+
+    <p class="font-weight-normal">Find by code</p>
+    <form th:action="@{/category/find}" method="post">
+        <input type="number" name="id" placeholder="Enter id"/>
+        <input type="submit" value="Search"/>
+    </form>
+
+    <p class="font-weight-normal">Find by name</p>
+    <form th:action="@{/category/find}" method="post">
+        <input type="text" name="name" placeholder="Enter name"/>
+        <input type="submit" value="Search"/>
+    </form>
+
+    <p class="font-weight-normal">Result:</p>
+    <div th:switch="${not #lists.isEmpty(categories)}">
+        <span th:case="${true}">
+            <table class="table table-dark">
+                 <thead>
+                 <tr>
+                     <th scope="col"> id </th>
+                     <th scope="col"> name </th>
+                     <th scope="col"> parent </th>
+                     <th scope="col"> children </th>
+                 </tr>
+                 </thead>
+                 <tbody>
+            <tr th:each="category : ${categories}">
+                     <td scope="row" th:text="${category.id}"/>
+                     <td th:text="${category.name}"/>
+                     <td th:text="${category.parent}"/>
+                     <td th:text="${category.children}"/>
+                 </tr>
+             </tbody>
+             </table>
+        </span>
+        <span th:case="${false}">
+            <p class="font-weight-normal">Empty result</p>
+        </span>
+    </div>
+
+</div>
+</body>
+</html>

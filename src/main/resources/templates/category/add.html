@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Category</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body class=".bg-secondary">
+<div class="container">
+    <li class="nav-item">
+        <a th:href="@{/}">back to main page</a>
+    </li>
+
+    <p class="font-weight-normal">Add a new category:</p>
+    <form th:action="@{/category/add}" method="post">
+        <input type="number" name="parentId" placeholder="Enter parent id"/>
+        <input type="text" name="name" placeholder="Enter category name"/>
+        <input type="submit" value="Add"/>
+    </form>
+
+    <p class="font-weight-normal">Result:</p>
+    <div th:switch="${category != null}">
+        <span th:case="${true}">
+            <p class="font-weight-normal">Saved category:</p>
+
+             <table class="table table-dark">
+                 <thead>
+                 <tr>
+                     <th scope="col"> id </th>
+                     <th scope="col"> name </th>
+                     <th scope="col"> parent </th>
+                     <th scope="col"> children </th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr>
+                     <td scope="row" th:text="${category.id}"/>
+                     <td th:text="${category.name}"/>
+                     <td th:text="${category.parent}"/>
+                     <td th:text="${category.children}"/>
+                 </tr>
+             </tbody>
+             </table>
+        </span>
+        <span th:case="${false}">
+            <p class="font-weight-normal">Empty result</p>
+        </span>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Category</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <li class="nav-item">
+        <a th:href="@{/}">back to main page</a>
+    </li>
+
+    <p class="font-weight-normal">Delete by id(code)</p>
+    <form th:action="@{/category/delete}" method="post">
+        <input type="number" name="id" placeholder="Enter id"/>
+        <input type="submit" value="Delete"/>
+    </form>
+
+</div>
+</body>
+</html>

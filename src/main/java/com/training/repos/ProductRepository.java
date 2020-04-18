@@ -1,0 +1,16 @@
+package com.training.repos;
+
+import com.training.models.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
+    Product getById(Long id);
+
+    List<Product> getByName(String nameProduct);
+
+}
+

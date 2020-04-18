@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <li class="nav-item">
+        <a th:href="@{/}">back to main page</a>
+    </li>
+
+    <p class="font-weight-normal">Operations with categories:</p>
+    <nav class="navbar bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a th:href="@{/category/find}">Find</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/category/add}">Add</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/category/update}">Update</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/category/delete}">Delete</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+</body>
+</html>
+

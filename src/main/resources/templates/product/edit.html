@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit product</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <li class="nav-item">
+        <a th:href="@{/}">back to main page</a>
+    </li>
+
+    <form th:object="${product}">
+        <input type="hidden" name="id" class="id" th:field="*{id}"/>
+
+        <div class="form-group">
+            <p class="font-weight-normal">Product name:</p>
+            <input type="text" class= "name" placeholder="Enter product name" th:field="*{name}" th:value="*{name}">
+        </div>
+        <p/>
+
+        <div class="form-group">
+            <p class="font-weight-normal">Prices:</p>
+            <div th:each="currency : ${T(com.training.models.enums.Currency).values()}">
+                <input type="number" step="0.01" th:class="${currency}"
+                       th:value="${product.getPriceValueByCurrency(currency)}">
+                <label th:for="${currency}" th:text="${currency}"/>
+                <!--                    <input type="text" disabled="true" th:text="${currency}" >-->
+                <p/>
+            </div>
+
+            </select>
+        </div>
+        <p/>
+
+        <div class="form-group">
+            <p class="font-weight-normal">Categories:</p>
+            <select class="categories" th:field="${product.categories}" th:object="${categories}" multiple>
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}">
+                </option>
+            </select>
+        </div>
+        <p/>
+        <button class="updatebutton" type="submit">update</button>
+    </form>
+
+    <div class="form-group">
+        <p class="font-weight-normal">Result:</p>
+        <div class="result"></div>
+    </div>
+</div>
+<script th:src="@{/js/jquery-3.5.0.min.js}"></script>
+<script th:src="@{/js/product/update.js}"></script>
+</body>
+</html>
